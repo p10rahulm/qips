@@ -4,6 +4,7 @@ Base settings to build other settings files upon.
 
 import environ
 
+
 ROOT_DIR = environ.Path(__file__) - 3  # (qips/config/settings/base.py - 3 = qips/)
 APPS_DIR = ROOT_DIR.path('qips')
 
@@ -22,7 +23,7 @@ DEBUG = env.bool('DJANGO_DEBUG', False)
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # though not all of them may be available with every OS.
 # In Windows, this must be set to your system time zone.
-TIME_ZONE = '+05.30'
+TIME_ZONE = 'Asia/Kolkata'
 # https://docs.djangoproject.com/en/dev/ref/settings/#language-code
 LANGUAGE_CODE = 'en-us'
 # https://docs.djangoproject.com/en/dev/ref/settings/#site-id
@@ -39,8 +40,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres://localhost/qips'),
+    'default': env.db('DATABASE_URL', default='postgres://localhost/saasqual'),
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'saasqual',
+#         'USER': 'saasuser',
+#         'PASSWORD': 'mypassword',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 # URLS
@@ -83,6 +95,7 @@ MIGRATION_MODULES = {
     'sites': 'qips.contrib.sites.migrations'
 }
 
+
 # AUTHENTICATION
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#authentication-backends
@@ -123,6 +136,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
 
 # MIDDLEWARE
 # ------------------------------------------------------------------------------
