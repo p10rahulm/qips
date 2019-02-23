@@ -1,0 +1,5 @@
+[run]
+include = qips/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin
